@@ -49,7 +49,9 @@ def okta_response(is_verified):
             {
                 "type": "com.okta.action.update",
                 "value": {
-                    "credential": credential_status
+                    "credential": {
+                        "status": credential_status
+                    }
                 }
             }
         ]
