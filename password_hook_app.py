@@ -44,7 +44,7 @@ def load_hash_store():
 def okta_response(is_verified):
     credential_status = "VERIFIED" if is_verified else "UNVERIFIED"
 
-    retrun jsonify({
+    return jsonify({
         "commands": [
             {
                 "type": "com.okta.action.update",
