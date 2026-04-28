@@ -44,7 +44,7 @@ def load_hash_store():
 def okta_response(is_verified):
     credential_status = "VERIFIED" if is_verified else "UNVERIFIED"
 
-    return jsonify({
+    response_body = {
         "commands": [
             {
                 "type": "com.okta.action.update",
@@ -53,7 +53,10 @@ def okta_response(is_verified):
                 }
             }
         ]
-    })
+    }
+    
+print("Returning to Okta", response body, flush=True)
+return jsonify(response_body)
 
 @app.route("/passwordImport", methods=["POST"])
 def password_import():
