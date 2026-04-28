@@ -55,7 +55,7 @@ def okta_response(is_verified):
         ]
     }
     
-print("Returning to Okta", response body, flush=True)
+print("Returning to Okta", response_body, flush=True)
 return jsonify(response_body)
 
 @app.route("/passwordImport", methods=["POST"])
