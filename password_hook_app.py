@@ -57,7 +57,12 @@ def okta_response(is_verified):
 
 @app.route("/passwordImport", methods=["POST"])
 def password_import():
-    data = request.get_json()
+    #data = request.get_json()
+    data = request.get_json(force=True, silent=True)
+
+    if not data:
+        print("No JSON received", flush = True)
+        return okta_response(False)
 
     username = data["data"]["context"]["credential"]["username"]
     password = data["data"]["context"]["credential"]["password"]
@@ -72,9 +77,9 @@ def password_import():
     generated_hash = custom_hash_hex(user["account_number"], password)
     stored_hash = user["stored_hash"]
 
-    print("Username:", username)
-    print("Generated:", generated_hash)
-    print("Stored   :", stored_hash)
+    print("Username:", username, flush=True)
+    print("Generated:", generated_hash, flush=True)
+    print("Stored   :", stored_hash, flush=True)
 
     if generated_hash == stored_hash:
         return okta_response(True)
